@@ -505,13 +505,13 @@ cdef class Session(object):
     def new_channel(self):
         return Channel(self)
 
-    def new_shell_channel(self):
+    def new_shell_channel(self, pty=True):
         channel = Channel(self)
-        channel.request_shell()
+        channel.request_shell(pty=pty)
         return channel
 
-    def invoke_shell(self):
-        return self.new_shell_channel()
+    def invoke_shell(self, pty=True):
+        return self.new_shell_channel(pty=pty)
 
     def scp(self):
         return SCP(self)
